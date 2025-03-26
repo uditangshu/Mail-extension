@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .email-compose {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 4px;
+        }
+        .email-compose input, .email-compose textarea {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .email-compose textarea {
+            min-height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-compose">
+        <input type="text" id="to" placeholder="To">
+        <input type="text" id="subject" placeholder="Subject">
+        <textarea id="content" placeholder="Email content"></textarea>
+    </div>
+
+    <script>
+        // Simulate email composition events
+        document.getElementById('content').addEventListener('input', () => {
+            const event = new CustomEvent('emailComposition', {
+                detail: {
+                    to: document.getElementById('to').value,
+                    subject: document.getElementById('subject').value,
+                    content: document.getElementById('content').value
+                }
+            });
+            document.dispatchEvent(event);
+        });
+    </script>
+</body>
+</html> 
